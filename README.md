@@ -1,10 +1,13 @@
 # FreeCodeCamp_DynamicProgramming++
-(plus: leetcode explorer card)
+`(plus: leetcode explorer card)`
 
-Just practicing DP
+### Just practicing DP
 
-Video link:
-https://www.youtube.com/watch?v=oFkDldu3C_4
+## materials
+
+- Video I link: https://www.youtube.com/watch?v=oFkDldu3C_4
+- Video II link: https://www.youtube.com/watch?v=oBt53YbR9Kk&t=6s
+- Leetcode Explorer Card link: https://leetcode.com/explore/learn/card/dynamic-programming/
 
 ### Introduction
 

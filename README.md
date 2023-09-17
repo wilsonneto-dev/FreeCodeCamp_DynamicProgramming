@@ -20,7 +20,7 @@ def fib(n):
 ```
 
 ```python
-#DP approach / memoisation
+#DP approach / memoisation / top-down
 class Solution:
     def fib(self, n: int, cache: {} = None) -> int:
         if cache == None: cache = { 0: 0, 1: 1 }
@@ -42,6 +42,21 @@ class Solution:
         if n <= 1: return n
         if n == 2: return 1
         return self.tribonacci(n-1) + self.tribonacci(n-2) + self.tribonacci(n-3)
+```
+
+```python
+# DP approach / memoisation / top-down
+class Solution:
+    def tribonacci(self, n: int, cache: {} = None) -> int:
+        if cache == None:
+            cache = { 0: 0, 1: 1, 2: 1 }
+
+        if n in cache:
+            return cache[n]
+
+        result = self.tribonacci(n-1, cache) + self.tribonacci(n-2, cache) + self.tribonacci(n-3, cache)
+        cache[n] = result
+        return result
 ```
 
 ## Exercises

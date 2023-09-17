@@ -1,4 +1,4 @@
-# FreeCodeCamp_DynamicProgramming++
+# FreeCodeCamp_DynamicProgramming
 
 `(plus: leetcode explorer card)`
 
@@ -24,6 +24,9 @@ FreeCodeCamp Video I:
 - [1137. N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)
 - [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
 - [322. Coin Change (Min Change)](https://leetcode.com/problems/coin-change/description/)
+- [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
+- [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)'
+- [Max Sum Without Adjacent](https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1)
 
 ---
 
@@ -107,4 +110,79 @@ class Solution:
 
         cache[amount] = _min
         return _min
+```
+
+---
+
+### Unique Paths
+
+```python
+# DP with memoization / top down
+class Solution:
+    def uniquePaths(self, m: int, n: int, cache: {} = None) -> int:
+        if m == 1 or n == 1: return 1
+        if cache == None: cache = {}
+
+        if (m, n) in cache: return cache[(m, n)]
+
+        _count = self.uniquePaths(m -1, n, cache) + \
+            self.uniquePaths(m, n -1, cache)
+
+        cache[(m, n)] = _count
+        return _count
+```
+
+---
+
+### Minimum Path Sum
+
+```python
+# DP with memoization / top down
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        if len(grid) == 1 and len(grid[0]) == 1:
+            return grid[0][0]
+        def minPathSumInner(x: int, y: int, grid: List[List[int]], cache: {}):
+            if x >= len(grid) or y >= len(grid[0]): return sys.maxsize
+
+            if x == len(grid) -1 and y == len(grid[0]) -1: return grid[-1][-1]
+            if (x, y) in cache: return cache[(x, y)]
+
+            _min = (
+                min(minPathSumInner(x + 1, y, grid, cache), minPathSumInner(x, y + 1, grid, cache))
+                + grid[x][y]
+            )
+            cache[(x, y)] = _min
+            return _min
+
+        cache = {}
+        minPathSumInner(0, 0, grid, cache)
+        return cache[(0,0)]
+```
+
+---
+
+### Max Sum Without Adjacent
+
+```python
+# DP with memoization / top down
+class Solution:
+
+	def findMaxSum(self, arr, n, cache: {} = None, idx = 0):
+	    if cache == None:
+	        cache = {}
+
+	    if idx >= len(arr):
+	        return 0
+
+	    if idx in cache:
+	        return cache[idx]
+
+	    _max = max(
+	        arr[idx] + self.findMaxSum(arr, n, cache, idx + 2),
+	        self.findMaxSum(arr, n, cache, idx + 1),
+        )
+
+        cache[idx] = _max
+        return _max
 ```

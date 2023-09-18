@@ -25,7 +25,7 @@ FreeCodeCamp Video I:
 - [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
 - [322. Coin Change (Min Change)](https://leetcode.com/problems/coin-change/description/)
 - [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
-- [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)'
+- [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
 - [Max Sum Without Adjacent](https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1)
 - [279. Perfect Squares](https://leetcode.com/problems/perfect-squares/description/)
 - [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/description/)

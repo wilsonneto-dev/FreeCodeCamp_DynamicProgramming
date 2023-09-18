@@ -27,6 +27,8 @@ FreeCodeCamp Video I:
 - [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
 - [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)'
 - [Max Sum Without Adjacent](https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1)
+- [279. Perfect Squares](https://leetcode.com/problems/perfect-squares/description/)
+- [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/description/)
 
 ---
 
@@ -186,3 +188,64 @@ class Solution:
         cache[idx] = _max
         return _max
 ```
+---
+
+279. Perfect Squares
+
+```python
+# DP with memoization / top down
+class Solution:
+    def numSquares(self, n: int) -> int:
+        def numSquares(_n, cache):
+            if _n == 1: return 1
+            if _n == 0: return 0
+
+            if _n in cache: 
+                return cache[_n]                
+
+            _next = 1
+            _min = sys.maxsize
+            while (_next * _next) <= _n:
+                _min = min(_min, numSquares(_n - (_next * _next), cache))
+                _next += 1
+            
+            cache[_n] = _min + 1
+            return cache[_n]
+                
+
+        return numSquares(n, {})
+
+
+```
+
+---
+
+### 518. Coin Change II
+
+```python
+# DP with memoization / top down
+class Solution:
+    def change(self, amount: int, coins: List[int], cache: {} = None, idx: int = 0) -> int:
+        if cache == None: 
+            cache = {}
+        
+        if amount == 0: 
+            return 1
+        
+        if idx >= len(coins) or amount < 0: 
+            return 0
+        
+        if (amount, idx) in cache:
+            return cache[(amount, idx)]
+
+        _combinations = 0
+        i = 0
+        while coins[idx] * i <= amount:
+            _combinations += self.change(amount - (coins[idx] * i), coins, cache, idx+1)
+            i += 1
+        
+        cache[(amount, idx)] = _combinations
+        return _combinations
+
+```
+
